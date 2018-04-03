@@ -1,7 +1,3 @@
-<?php 
-	include("db_connect.php");
-	session_start();
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,21 +14,21 @@
 <div class="col-sm-12">
 	<div class="row">
 		<div class="col-sm-3 side_nav_supervisor bg-secondary">
-			<h3 class="supervisor_heading"><?php echo $_SESSION['userName']; ?></h3>
+			<h3 class="supervisor_heading">STUDENT</h3>
 			<hr class="horizontal_line">
 			<br>
 			<ul class="supervisor_menu">
-				<li class="supervisor_menu_list"><a href="supervisor_home_page.php" class="supervisor_menu_link "><i class="fa fa-list" aria-hidden="true"></i> APPOINTMENT LIST</a></li>
-				<li class="supervisor_menu_list"><a href="supervisor_dashboard.php" class="supervisor_menu_link "><i class="fa fa-user" aria-hidden="true"></i> DASHBOARD</a></li>
-				<li class="supervisor_menu_list"><a href="supervisor_messages.php" class="supervisor_menu_link supervisor_menu_link_active"><i class="fa fa-envelope" aria-hidden="true"></i>MESSAGES</a></li>
-				
+				<li class="supervisor_menu_list"><a href="students_home_page.php" class="supervisor_menu_link supervisor_menu_link_active"><i class="fa fa-list" aria-hidden="true"></i>BOOK APPOINTMENT </a></li>
+				<li class="supervisor_menu_list"><a href="supervisor_dashboard.php" class="supervisor_menu_link "><i class="fa fa-user" aria-hidden="true"></i> USER PROFILE</a></li>
+				<li class="supervisor_menu_list"><a href="supervisor_messages.php" class="supervisor_menu_link "><i class="fa fa-envelope" aria-hidden="true"></i>MESSAGES</a></li>
+
 			</ul>
 
 		</div>
 		<div class="col-sm-9 body_supervisor">
 			<a href="index.php" class="log_out">Log Out</a>
 			<br>
-		
+
 			
 			
 		</div>

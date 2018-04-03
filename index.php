@@ -1,5 +1,89 @@
 <?php 
     include('db_connect.php');
+    session_start();
+
+   $error_empty_message="";
+   $error_invalid_message="";
+   //sanitize inputs
+   function test_input($data){
+    $data=trim($data);
+    $data=stripcslashes($data);
+    $data=htmlspecialchars($data);
+    return $data;
+
+   }
+
+    if(isset($_POST['supervisor_login'])){
+       
+        if(!empty($_POST['supervisor_user_name']) && !empty($_POST['supervisor_password'])){
+            $user_name=$_POST['supervisor_user_name'];
+            $password=md5($_POST['supervisor_password']);
+            $query_username_password=$connect->query("SELECT * FROM supervisor_management_system.supervisors WHERE (userName='".$user_name."' AND password='".$password."')");
+            $username_password_count=count($query_username_password->fetchALL());
+            if ($username_password_count > 0){
+                //session global variables to get user attributes
+                $get_user=$connect->prepare("SELECT id,supervisor_name,userName,email FROM supervisor_management_system.supervisors WHERE (userName=:user AND password=:password)");
+                $get_user->execute(array(':user' => $user_name,':password' => $password));
+
+                foreach($get_user as $row){
+                    $_SESSION['id']=$row['id'];
+                    $_SESSION['supervisor_name']=$row['supervisor_name'];
+                    $_SESSION['userName']=$row['userName'];
+                    $_SESSION['email']=$row['email'];
+                }
+
+
+
+                 header("location:supervisor_home_page.php");
+            }
+            $error_invalid_message="<div class='alert alert-danger' role='alert'>
+                  SUPERVISOR LOGIN ERROR MESSAGE: invalid user name or password
+                    </div>";
+           
+
+        }
+        else{
+             $error_empty_message="<div class='alert alert-danger' role='alert'>
+                  SUPERVISOR LOGIN ERROR MESSAGE: enter username or password
+                    </div>";
+
+        }
+
+        
+    }
+
+
+
+
+
+
+    if(isset($_POST['student_login'])){
+        if(!empty($_POST['matric_number']) && !empty($_POST['student_password'])){
+            $matric_number=$_POST['matric_number'];
+            $student_password=md5($_POST['student_password']);
+            $query_matric_password=$connect->query("SELECT * FROM supervisor_management_system.students WHERE (matricNo='".$matric_number."' AND password='".$student_password."')");
+            $matric_password=count($query_matric_password->fetchALL());
+            if ($matric_password > 0 ){
+
+
+            }
+            else{
+                $error_invalid_message="<div class='alert alert-danger' role='alert'>
+                  STUDENT LOGIN ERROR MESSAGE: invalid user name or password
+                    </div>";
+
+            }
+
+
+        }
+        else{
+            $error_empty_message="<div class='alert alert-danger' role='alert'>
+                  STUDENT LOGIN ERROR MESSAGE: enter username or password
+                    </div>";
+
+        }
+        //header("location:supervisor_dashboard.php");
+    }
 ?>
 
 
@@ -58,11 +142,11 @@
              	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close" aria-hidden="true"></i></button>
              	<h5 class="modal-title sign_up_as_title" id="exampleModalLabel">SUPERVISOR LOG IN </h5>
                 
-             	<form method="post" class="login_form_pos" >
+             	<form method="post" class="login_form_pos" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" >
              		<label class="login_text">User Name</label><br>
-	             	<input type="text" class="login_input_box"><br>
+	             	<input type="text" name="supervisor_user_name" class="login_input_box"><br>
 	             	<label class="login_text">Password</label><br>
-	             	<input type="password" class="login_input_box"><br>
+	             	<input type="password" name="supervisor_password" class="login_input_box"><br>
 	             	<br>
 	             	<input type="submit" class="login_submit" name="supervisor_login" value="LOG IN">
 
@@ -83,11 +167,11 @@
              	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close" aria-hidden="true"></i></button>
              	<h5 class="modal-title sign_up_as_title" id="exampleModalLabel">STUDENT LOG IN </h5>
          
-             	<form method="post" class="login_form_pos">
+             	<form method="post" class="login_form_pos"  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
              		<label class="login_text">Matric Number</label><br>
-	             	<input type="text" class="login_input_box"><br>
+	             	<input type="text" name="matric_number" class="login_input_box"><br>
 	             	<label class="login_text">Password</label><br>
-	             	<input type="password" class="login_input_box"><br>
+	             	<input type="password" name="student_password" class="login_input_box"><br>
 	             	<br>
 	             	<input type="submit" class="login_submit" name="student_login" value="LOG IN">
              	</form>
@@ -107,7 +191,11 @@
 	<br>
 	<br>
 	<br>
-	
+	<?php 
+        echo $error_empty_message;
+        echo $error_invalid_message;
+     ?>
+
 
 
 	<ul class="log_in_as">

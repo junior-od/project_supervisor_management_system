@@ -1,3 +1,9 @@
+<?php 
+	include("db_connect.php");
+	session_start();
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +20,7 @@
 <div class="col-sm-12">
 	<div class="row">
 		<div class="col-sm-3 side_nav_supervisor bg-secondary">
-			<h3 class="supervisor_heading">SUPERVISOR</h3>
+			<h3 class="supervisor_heading"><?php echo $_SESSION['userName']; ?></h3>
 			<hr class="horizontal_line">
 			<br>
 			<ul class="supervisor_menu">
@@ -26,7 +32,7 @@
 
 		</div>
 		<div class="col-sm-9 body_supervisor">
-			<a href="#" class="log_out">Log Out</a>
+			<a href="index.php" class="log_out">Log Out</a>
 			<br>
 
 			

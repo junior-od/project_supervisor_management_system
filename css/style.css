@@ -1,0 +1,292 @@
+body{
+	background-color:  #ccccb3;
+}
+
+.body{
+	background: url("../images/background.jpg");
+	background-repeat: no-repeat;
+	overflow-x:hidden;
+
+}
+
+.errors{
+	color: red;
+}
+
+.navbars{
+	background-color: black;
+}
+
+.login_submit{
+	height: 30px;
+	font-size: 15px;
+	cursor: pointer;
+	transition:all 0.5s;
+	color:#002633;
+}
+
+.login_submit:hover{
+	border-color: #002633;
+	background-color: #002633;
+	color:white;
+
+	transition:all 0.5s;
+}
+
+.sign_up_button{
+	background-color: white;
+	cursor: pointer;
+	transition:all 0.5s;
+	color:#002633;
+
+}
+
+.sign_up_as_button:hover{
+	border-color: #002633;
+	background-color: #002633;
+	color:white;
+
+	transition:all 0.5s;
+
+}
+
+.log_in_as_button{
+	background-color: white;
+	cursor: pointer;
+	transition:all 0.5s;
+	color:#002633;
+
+}
+
+.log_in_as_button:hover{
+	border-color: #002633;
+	background-color: #002633;
+	color:white;
+
+	transition:all 0.5s;
+}
+
+.supervisor_type{
+	color:#0088cc;
+}
+
+
+.login_form_pos{
+	text-align: center;
+}
+
+.modal_styles{
+	margin: 130px auto;
+
+}
+.modal_style{
+    width: 100%;
+    height: 300px;
+	background: linear-gradient(-10deg,#002633,#39CCCC); 
+	box-shadow: 3px 3px 30px 12px black;
+}
+
+.login_text{
+	font-size: 20px;
+}
+
+.login_input_box{
+	
+	height: 25px;
+	width:40%;
+}
+
+.close{
+	cursor: pointer;
+	color: white;
+	font-size: 20px;
+}
+
+.copyright{
+	width:100%;
+	text-align: center;
+}
+
+.btn{
+	cursor: pointer;
+}
+
+.index_list{
+	width:100%;
+	display: inline;
+	padding: 0;
+}
+
+.index_list_style{
+	display: inline;
+}
+
+
+.sign_up_button{
+	float: right;
+	background-color: white;
+	color: #002633;
+	cursor:pointer;
+	transition:all 0.5s;
+
+
+}
+
+.sign_up_button:hover{
+	border-color: #002633;
+	background-color: #002633;
+	color:white;
+
+	transition:all 0.5s;
+
+	
+}
+
+.sign_up_button_for_reg{
+	background-color: white;
+	color: #002633;
+	cursor:pointer;
+	transition:all 0.5s;
+
+}
+
+.sign_up_button_for_reg:hover{
+	border-color: #002633;
+	background-color: #002633;
+	color:white;
+
+	transition:all 0.5s;
+
+}
+
+.button_for_appoint{
+	background-color: white;
+	color: #002633;
+	cursor:pointer;
+	transition:all 0.5s;
+}
+
+.button_for_appoint:hover{
+	background-color: #002633;
+	color:white;
+	border-color:#002633;
+	transition:all 0.5s;
+
+}
+
+.sign_up_as_list{
+	padding:6px 16px;
+	display: inline;
+}
+
+.log_in_as{
+	text-align: center;
+	width: 100%;
+}
+.log_in_as_list{
+
+	padding:6px 16px;
+	display: inline;
+}
+
+.sign_up_as{
+	margin:50px auto;
+}
+
+.log_in_as_title{
+	color:white;
+}
+
+.sign_up_as_title{
+	width:100%;
+	font-size: 30px;
+	color:white;
+	text-align: center;
+}
+
+.container_form{
+	
+	margin: 10px 170px auto;
+	text-align: center;
+	width: 100%;
+}
+
+.supervisor_sign_up_form{
+	box-shadow: 3px 3px 26px 12px gray;
+	width: 50%;
+	text-align: center;
+	
+
+}
+
+.sign_up_style{
+	color:white;
+}
+
+.sign_up_title_style{
+	color:white;
+}
+
+
+.side_nav_supervisor{
+	background: linear-gradient(-10deg,#002633,#39CCCC); 
+	
+	height: 700px;
+	
+}
+
+.body_supervisor{
+	background-color: white;
+	height: 50px;
+}
+
+.nav_supervisor{
+	background-color: black;
+	
+
+}
+
+.log_out{
+	color:gray;
+	float: right;
+	font-size: 25px;
+}
+
+.supervisor_heading{
+	text-align: center;
+	color:white;
+}
+
+.horizontal_line{
+	border-color: 2px solid white;
+	width:100%;
+}
+
+.supervisor_menu_list{
+	display: block;
+	font-size: 20px;
+	padding: 5px 5px;
+}
+
+
+
+.supervisor_menu_link{
+	color: white;
+	width:100%;
+}
+
+.supervisor_menu_link_active{
+	background-color: #002633;
+	padding: 10px;
+
+}
+
+.supervisor_menu_link:hover{
+	color:white;
+	text-decoration: none;
+}
+
+.supervisor_schedule{
+	background-color: white;
+	height: 500px;
+}

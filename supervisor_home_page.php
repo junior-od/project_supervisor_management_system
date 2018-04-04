@@ -32,7 +32,7 @@
 
 		</div>
 		<div class="col-sm-9 body_supervisor">
-			<a href="index.php" class="log_out">Log Out</a>
+			<a href="supervisor_logout.php" class="log_out">Log Out</a>
 			<br>
 
 			

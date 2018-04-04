@@ -34,6 +34,7 @@
 
 
 
+
                  header("location:supervisor_home_page.php");
             }
             $error_invalid_message="<div class='alert alert-danger' role='alert'>
@@ -64,6 +65,30 @@
             $query_matric_password=$connect->query("SELECT * FROM supervisor_management_system.students WHERE (matricNo='".$matric_number."' AND password='".$student_password."')");
             $matric_password=count($query_matric_password->fetchALL());
             if ($matric_password > 0 ){
+                //session global variables to get user attributes
+                $get_student=$connect->prepare("SELECT id,fullName,matricNo,supervisor_user_name,email,profile_picture FROM supervisor_management_system.students WHERE (matricNo=:matric AND password=:password)");
+                $get_student->execute(array(':matric' => $matric_number,':password' => $student_password));
+
+                foreach($get_student as $rows){
+                    $_SESSION['id']=$rows['id'];
+                    $_SESSION['fullName']=$rows['fullName'];
+                    $_SESSION['matricNo']=$rows['matricNo'];
+                    $_SESSION['supervisor_user_name']=$rows['supervisor_user_name'];
+                    $_SESSION['email']=$rows['email'];
+                    $_SESSION['profile_picture']=$rows['profile_picture'];
+                }
+
+                $query_supervisor_name=$connect->prepare("SELECT supervisor_name FROM supervisor_management_system.supervisors WHERE userName=:user_name");
+                $query_supervisor_name->execute(array(':user_name' => $_SESSION['supervisor_user_name']));
+                foreach($query_supervisor_name as $i){
+                    $_SESSION['supervisor_full_name']=$i['supervisor_name'];
+                }
+
+               
+            
+                 header("location:students_home_page.php");
+
+
 
 
             }

@@ -25,9 +25,9 @@
 			<hr class="horizontal_line">
 			<br>
 			<ul class="supervisor_menu">
-				<li class="supervisor_menu_list"><a href="students_home_page.php" class="supervisor_menu_link supervisor_menu_link_active"><i class="fa fa-list" aria-hidden="true"></i>BOOK APPOINTMENT </a></li>
+				<li class="supervisor_menu_list"><a href="students_home_page.php" class="supervisor_menu_link "><i class="fa fa-list" aria-hidden="true"></i>BOOK APPOINTMENT </a></li>
 				<li class="supervisor_menu_list"><a href="students_user_profile.php" class="supervisor_menu_link "><i class="fa fa-user" aria-hidden="true"></i> USER PROFILE</a></li>
-				<li class="supervisor_menu_list"><a href="students_messages.php" class="supervisor_menu_link "><i class="fa fa-envelope" aria-hidden="true"></i>MESSAGES</a></li>
+				<li class="supervisor_menu_list"><a href="students_messages.php" class="supervisor_menu_link supervisor_menu_link_active"><i class="fa fa-envelope" aria-hidden="true"></i>MESSAGES</a></li>
 
 			</ul>
 

@@ -290,3 +290,37 @@ body{
 	background-color: white;
 	height: 500px;
 }
+
+.student_user_profile_1{
+	box-shadow: 3px 3px 3px 3px gray;
+	height:370px;
+	background-color: white;
+}
+
+.student_user_profile_2{
+	height:500px;
+	background-color: white;
+	box-shadow: 3px 3px 3px 3px gray;
+
+
+}
+
+.update_profile_button{
+	background-color: white;
+	cursor: pointer;
+	transition:all 0.5s;
+	color:#002633;
+
+}
+
+.update_profile_button:hover {
+	border-color: #002633;
+	background-color: #002633;
+	color:white;
+
+	transition:all 0.5s;
+}
+
+.user_profile_form{
+	text-align: center;
+}

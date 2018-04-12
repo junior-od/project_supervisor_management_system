@@ -88,8 +88,8 @@
 													    	id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 														 	student_name VARCHAR(60) NOT NULL,
 														 	appointment_date VARCHAR(30) NOT NULL,
-														 	time VARCHAR(50) NOT NULL,
-														 	message VARCHAR(50) NOT NULL
+														 	time VARCHAR(50) NOT NULL
+														 	
 
 													    	)";
 														$connect->exec($appointment_table);
@@ -109,56 +109,70 @@
 														$appointment_table="CREATE TABLE appointment_schedule_$user_name(
 															id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 															days VARCHAR(30) NOT NULL,
-															time VARCHAR(30) NOT NULL,
+															from_time VARCHAR(30) ,
+															to_time VARCHAR(30) ,
 															max_num_students_per_day int(3)  NOT NULL
 															)";
 														
 														$connect->exec($appointment_table);
 
-														$insert_into_appointment_table=$connect->prepare("INSERT INTO supervisor_management_system.appointment_schedule_$user_name(days,time,max_num_students_per_day)
-																							VALUES(:days,:time,:max_num_students_per_day)");
+														$insert_into_appointment_table=$connect->prepare("INSERT INTO supervisor_management_system.appointment_schedule_$user_name(days,from_time,to_time,max_num_students_per_day)
+																							VALUES(:days,:from_time,:to_time,:max_num_students_per_day)");
 
 														//insert for sunday
 														$days="sunday";
-														$time="not available";
+														$from_time="";
+														$to_time="";
+
 														$max_num_students_per_day="0";
-														$insert_into_appointment_table->execute(array(':days' => $days,':time' => $time ,':max_num_students_per_day' => $max_num_students_per_day));
+														$insert_into_appointment_table->execute(array(':days' => $days,':from_time' => $from_time ,':to_time'=> $to_time,':max_num_students_per_day' => $max_num_students_per_day));
 
 														//insert for monday
 														$days="monday";
-														$time="not available";
+														$from_time="";
+														$to_time="";
 														$max_num_students_per_day="0";
-														$insert_into_appointment_table->execute(array(':days' => $days,':time' => $time ,':max_num_students_per_day' => $max_num_students_per_day));
+														$insert_into_appointment_table->execute(array(':days' => $days,':from_time' => $from_time ,':to_time'=> $to_time,':max_num_students_per_day' => $max_num_students_per_day));
+														
 
 														//insert for tuesday
 														$days="tuesday";
-														$time="not available";
+														$from_time="";
+														$to_time="";
 														$max_num_students_per_day="0";
-														$insert_into_appointment_table->execute(array(':days' => $days,':time' => $time ,':max_num_students_per_day' => $max_num_students_per_day));
-
+														$insert_into_appointment_table->execute(array(':days' => $days,':from_time' => $from_time ,':to_time'=> $to_time,':max_num_students_per_day' => $max_num_students_per_day));
+														
 														//insert for wednesday
 														$days="wednesday";
-														$time="not available";
+														$from_time="";
+														$to_time="";
 														$max_num_students_per_day="0";
-														$insert_into_appointment_table->execute(array(':days' => $days,':time' => $time ,':max_num_students_per_day' => $max_num_students_per_day));
+														$insert_into_appointment_table->execute(array(':days' => $days,':from_time' => $from_time ,':to_time'=> $to_time,':max_num_students_per_day' => $max_num_students_per_day));
+														
 
 														//insert for thursday
 														$days="thursday";
-														$time="not available";
+														$from_time="";
+														$to_time="";
 														$max_num_students_per_day="0";
-														$insert_into_appointment_table->execute(array(':days' => $days,':time' => $time ,':max_num_students_per_day' => $max_num_students_per_day));
+														$insert_into_appointment_table->execute(array(':days' => $days,':from_time' => $from_time ,':to_time'=> $to_time,':max_num_students_per_day' => $max_num_students_per_day));
+														
 
 														//insert for friday
 														$days="friday";
-														$time="not available";
+													    $from_time="";
+														$to_time="";
 														$max_num_students_per_day="0";
-														$insert_into_appointment_table->execute(array(':days' => $days,':time' => $time ,':max_num_students_per_day' => $max_num_students_per_day));
+														$insert_into_appointment_table->execute(array(':days' => $days,':from_time' => $from_time ,':to_time'=> $to_time,':max_num_students_per_day' => $max_num_students_per_day));
+														
 
 														//insert for saturday
 														$days="saturday";
-														$time="not available";
+														$from_time="";
+														$to_time="";
 														$max_num_students_per_day="0";
-														$insert_into_appointment_table->execute(array(':days' => $days,':time' => $time ,':max_num_students_per_day' => $max_num_students_per_day));
+														$insert_into_appointment_table->execute(array(':days' => $days,':from_time' => $from_time ,':to_time'=> $to_time,':max_num_students_per_day' => $max_num_students_per_day));
+														
 														header("location:sucessPage_supervisor.php");
 													    
 										}

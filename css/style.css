@@ -247,6 +247,9 @@ body{
 }
 
 .log_out{
+	position: absolute;
+	top: 0;
+	right: 0;
 	color:gray;
 	float: right;
 	font-size: 25px;
@@ -288,7 +291,8 @@ body{
 
 .supervisor_schedule{
 	background-color: white;
-	height: 500px;
+	height: 600px;
+	box-shadow: 4px 4px 4px 4px gray;
 }
 
 .student_user_profile_1{
@@ -323,4 +327,29 @@ body{
 
 .user_profile_form{
 	text-align: center;
+}
+
+.body_book_appointment{
+	background-color: white;
+	height: 500px;
+	box-shadow: 4px 4px 4px 4px gray;
+}
+
+.book_appointment_submit{
+	height:40px;
+
+	background-color: white;
+	color: #002633;
+	cursor:pointer;
+	transition:all 0.5s;
+}
+
+.book_appointment_submit:hover{
+	height:40px;
+	background-color: #002633;
+	color:white;
+	border-color:#002633;
+	transition:all 0.5s;
+	box-shadow: 3px 3px 33px 3px gray;
+
 }

@@ -11,5 +11,8 @@ $(document).ready(function(){
 	$("#log_in_student_button").click(function(){
 		$("#login_student").modal();
 	})
+
+
+
 })
 

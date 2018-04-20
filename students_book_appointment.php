@@ -19,19 +19,19 @@
 				$book_time=$_POST['book_time'];
 				$book_date=$_POST['book_date'];
 				$book_date_change=strtotime("$book_date");
-				$change_book_date=date("d/m/Y",$book_date_change);
+				$change_book_date=date("d-m-Y",$book_date_change);
 				$book_message=$_POST['book_message'];
 
 				$today_time=strtotime("today");//get todays time
-				$today_date=date("d/m/Y",$today_time);
+				$today_date=date("d-m-Y",$today_time);
 				$date_time=array();//declare empty array to store get available dates till end of semester
 				$start_date = strtotime("$day");
 				$end_date = strtotime("21 may 2018");//set the end date of the semester
-				$end=date("d/m/Y",$end_date);
+				$end=date("d-m-Y",$end_date);
 				$i=0;
 
 				while ($start_date < $end_date) {
-				  $date_time[$i]=date("d/m/Y", $start_date);
+				  $date_time[$i]=date("d-m-Y", $start_date);
 				  $start_date = strtotime("+1 week", $start_date);
 				  $i=$i+1;
 				}
@@ -130,11 +130,7 @@
 		}
 		
 	}
-	// $n=strtotime("2018-02-16");
-	// $ff=date("d/m/Y",$n);
-	// echo $ff;
 	
-	//header("location:students_my_appointment.php");
 ?>
 
 <!DOCTYPE html>

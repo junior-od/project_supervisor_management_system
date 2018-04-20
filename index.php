@@ -37,9 +37,12 @@
 
                  header("location:supervisor_home_page.php");
             }
+            else{
             $error_invalid_message="<div class='alert alert-danger' role='alert'>
                   SUPERVISOR LOGIN ERROR MESSAGE: invalid user name or password
                     </div>";
+
+                }
            
 
         }

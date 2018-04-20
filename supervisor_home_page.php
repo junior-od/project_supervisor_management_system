@@ -34,8 +34,71 @@
 		<div class="col-sm-9 body_supervisor">
 			<a href="supervisor_logout.php" class="log_out">Log Out</a>
 			<br>
+			<br>
+			<br>
+			<br>
 
-			
+			<div class="appointment_list">
+				<table class="table">
+					<thead>
+					    <tr>
+					      <th scope="col">STUDENT NAME</th>
+
+					      <th scope="col">DATE</th>
+					      <th scope="col">TIME </th>
+					    
+					    </tr>
+				    </thead>
+				    <tbody>
+				<?php 
+					$user_name= $_SESSION['userName'];
+					$query_appointment_list=$connect->query("SELECT id,student_name,appointment_date,time FROM appointment_$user_name ORDER BY appointment_date ASC");
+					$appointment_list_fetch=$query_appointment_list->fetchAll();
+					 date_default_timezone_set("Africa/Lagos");
+					  $today_time=strtotime("today +18hours");//get todays time
+					 $today_date=date("d-m-Y H:i:sa",$today_time);
+					 
+
+
+
+					foreach($appointment_list_fetch as $get){
+						if($get['appointment_date'] < $today_date){
+							$delete=$connect->exec("DELETE  FROM appointment_$user_name WHERE id='".$get['id']."' AND appointment_date='".$get['appointment_date']."' ");
+
+						}
+						else{
+							echo "<tr>";
+							echo "<td>".$get['student_name']."</td>";
+							$temp_name=$get['student_name'];
+							$query_matric=$connect->query("SELECT matricNo FROM students WHERE fullName='".$temp_name."'");
+							$query_matric_fetch=$query_matric->fetchAll();
+							foreach($query_matric_fetch as $fet){
+								$temp_matric=$fet['matricNo'];
+							}
+							echo "<td>".$get['appointment_date']."</td>";
+							echo "<td>".$get['time']."</td>";
+							$temp_id=$get['id'];
+							$temp_appointment_date=$get['appointment_date'];
+							$temp_time=$get['time'];
+							echo  "<td><button type='submit' class='btn btn-danger ' ><a  class='delete_link' href='supervisor_delete_appointment.php?id=$temp_id&matric=$temp_matric'>CANCEL APPOINTMENT</a></button></td>";		
+							echo "</tr>";
+
+						
+						 }
+
+					}
+
+
+
+
+
+
+
+				?>
+					</tbody>
+				</table>
+
+			</div>
 			
 		</div>
 		

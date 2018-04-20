@@ -333,6 +333,7 @@ body{
 	background-color: white;
 	height: 500px;
 	box-shadow: 4px 4px 4px 4px gray;
+	overflow-y:auto;
 }
 
 .book_appointment_submit{
@@ -352,4 +353,36 @@ body{
 	transition:all 0.5s;
 	box-shadow: 3px 3px 33px 3px gray;
 
+}
+
+.body_view_appointment{
+	background-color: white;
+	height: 500px;
+	box-shadow: 4px 4px 4px 4px gray;
+	overflow-y:auto;
+
+}
+
+.appointment_list{
+	background-color: white;
+	height: 300px;
+	box-shadow: 4px 4px 4px 4px gray;
+	overflow-y:auto;
+}
+
+.appointment_delete{
+	background-color: white;
+	height: 400px;
+	box-shadow: 4px 4px 4px 4px gray;
+	
+
+}
+
+.delete_link{
+	color:white;
+}
+
+.delete_link:hover{
+	text-decoration: none;
+	color:white;
 }

@@ -14,7 +14,7 @@
 				$full_name_error="re type*";
 			}
 			else if ($full_name_count > 0 ){
-				$full_name_error="exists";
+				$full_name_error="name exists";
 			}
 		}
 
@@ -32,7 +32,7 @@
 				$matric_number_error="invalid";
 			}
 			else if ($matric_number_count > 0){
-				$matric_number_error="exists";
+				$matric_number_error="matric exists";
 			}
 		}
 
@@ -46,7 +46,7 @@
 				$email_address_error="re type";
 			}
 			else if ($email_address_count > 0){
-				$email_address_error="exists";
+				$email_address_error=" email exists";
 			}
 		}
 

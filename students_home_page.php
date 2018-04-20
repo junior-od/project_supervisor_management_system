@@ -224,6 +224,7 @@
 <script>window.jQuery </script>
 <script src="assets/js/vendor/popper.min.js"></script>
 <script src="js/jquery-1.11.1.js"></script>
+
 <script src="js/bootstrap.min.js"></script>
 <script src="assets/js/vendor/holder.min.js"></script>
 </body>

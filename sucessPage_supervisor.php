@@ -38,7 +38,7 @@
 
 <nav class="navbar navbars navbar-expand-lg  fixed-top ">
 	<ul class="index_list">
-		<li class="index_list_style"><a class="navbar-brand" href=" " >SUPERVISOR</a></li>
+		<li class="index_list_style"><a class="navbar-brand" href="index.php" >SUPERVISOR</a></li>
 		<li class="index_list_style"><button class="btn sign_up_button" id="mySignUpButton">Sign Up</button></li>
 	</ul>
 

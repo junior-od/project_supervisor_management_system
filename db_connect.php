@@ -17,7 +17,7 @@
 		//create database table
 		// $sql_table1="CREATE TABLE supervisors(
 		// 	id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-		// 	fullName VARCHAR(60) NOT NULL,
+		// 	supervisor_name VARCHAR(60) NOT NULL,
 		// 	userName VARCHAR(30) NOT NULL,
 		// 	email VARCHAR(50) NOT NULL,
 		// 	password VARCHAR(50) NOT NULL,
@@ -30,6 +30,7 @@
 		// 	id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 		// 	fullName VARCHAR(60) NOT NULL,
 		// 	matricNo INT(10) NOT NULL,
+		//  supervisor_user_name(50) NOT NULL,
 		// 	email VARCHAR(50) NOT NULL,
 		// 	profile_picture VARCHAR(50) NOT NULL,
 		// 	password VARCHAR(50) NOT NULL,

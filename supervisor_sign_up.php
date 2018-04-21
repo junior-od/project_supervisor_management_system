@@ -75,9 +75,9 @@
 														
 														$query= $connect->prepare($insert_sql);
 
-													    $full_name = $_POST['full_name'];
-													    $user_name = $_POST['user_name'];
-													    $email_address =$_POST['email_address'];
+													    $full_name = test_input($_POST['full_name']);
+													    $user_name = test_input($_POST['user_name']);
+													    $email_address =test_input($_POST['email_address']);
 													    $password=md5($_POST['password']);
 													    
 
@@ -97,9 +97,14 @@
 
 														//create table for user_message
 														$message_table="CREATE TABLE message_$user_name(
-															id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-															student_name VARCHAR(60) NOT NULL,
-															message VARCHAR(500) NOT NULL
+															id INT(9) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+															sender VARCHAR(60) NOT NULL,
+															receiver VARCHAR(60) NOT NULL,
+															message VARCHAR(500) NOT NULL,
+															opened ENUM('0','1') NOT NULL,
+															sender_delete ENUM('0','1') NOT NULL,
+															receiver_delete ENUM('0','1') NOT NULL,
+															time_sent TIMESTAMP
 
 															)";
 
@@ -192,7 +197,12 @@
 		}
 
 	
-
+	function test_input($data){
+		$data=stripcslashes($data);
+		$data=htmlspecialchars($data);
+		$data=trim($data);
+		return $data;
+	}
 	//close connection
 	$connect=null;
 

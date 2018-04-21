@@ -32,6 +32,16 @@
 		<div class="col-sm-9 body_supervisor">
 			<a href="supervisor_logout.php" class="log_out">Log Out</a>
 			<br>
+			<br>
+			<br>
+
+
+
+			<div class="message_box">
+				<a href="supervisor_new_convo.php">new conversation</a>
+
+
+			</div>
 		
 			
 			

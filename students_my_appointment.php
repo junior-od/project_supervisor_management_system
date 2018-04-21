@@ -92,21 +92,16 @@
 						 	$end_appointment_cancel=strtotime("$temp_date $temp_time - 10 hours");
 						    $end_appointment_cancel_time=date("d-m-Y H:i:sa",$end_appointment_cancel);
 
+                            $distance=$end_appointment_cancel -$now_time;
 
-
-						    $day=ceil(($end_appointment_cancel -time())/60/60/24);
-						    $hour=ceil(($end_appointment_cancel -time())/60/60);
-						    $minutes=ceil(($end_appointment_cancel -time())/60);
-						    $second=ceil(($end_appointment_cancel -time()));
+						    $day=floor(($distance)/60/60/24);
+						    $hour=floor(($distance)/(3600/24));
+						    $minutes=floor(($distance)/60);
+						    $second=floor(($distance));
                             
 
 						 
-						   // echo "<script>";
-						   // echo "var x =" .json_encode($end_appointment_cancel).";";
-						   // echo "var ";
-						   // echo "var now=new Date().getTime();";
-						   // echo "alert(x-now)";
-						   // echo "</script>";
+						    
 
 						    
 						    if ($now_time_date > $end_appointment_cancel_time){
@@ -115,6 +110,8 @@
 						    else{
 						    	echo  "<td><button type='submit' class='btn btn-danger ' ><a  class='delete_link' href='delete_student_appointment.php?id=$temp_id'>CANCEL APPOINTMENT</a></button></td>";	
 						    }	
+
+						    
 						    echo "<td>".$day."d " .$hour."h ".$minutes."m ".$second."s "."</td>";
 						    
 						 	

@@ -386,3 +386,12 @@ body{
 	text-decoration: none;
 	color:white;
 }
+
+.message_box{
+	
+	background-color: white;
+	height: 500px;
+	box-shadow: 4px 4px 4px 4px gray;
+	overflow-y:auto;
+
+}

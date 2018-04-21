@@ -106,9 +106,9 @@
 																VALUES(:sup_user_name,:full_name,:matric_num,:email,:profile_picture,:password)";
 													$query_insert=$connect->prepare($insert_sql);
 													
-													$full_name=$_POST['full_name'];
-													$matric_number=$_POST['matric_number'];
-													$email_address=$_POST['email_address'];
+													$full_name=test_input($_POST['full_name']);
+													$matric_number=test_input($_POST['matric_number']);
+													$email_address=test_input($_POST['email_address']);
 													$password=md5($_POST['password']);
 													//echo $supervisor_user_name;
 
@@ -157,13 +157,13 @@
 
 													 $result=$query_insert->execute(array(':sup_user_name' => $supervisor_user_name,':full_name' => $full_name, ':matric_num' => $matric_number,':email' => $email_address,':profile_picture' => $avatar_path,':password' => $password));
 
-													 $student_message_table="CREATE TABLE message_$matric_number(
-													 	id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-													 	supervisor_name VARCHAR(60) NOT NULL,
-														message VARCHAR(500) NOT NULL
+													 // $student_message_table="CREATE TABLE message_$matric_number(
+													 // 	id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+													 // 	supervisor_name VARCHAR(60) NOT NULL,
+														// message VARCHAR(500) NOT NULL
 
-														)";
-													 $connect->exec($student_message_table);
+														// )";
+													 // $connect->exec($student_message_table);
 
 
 													
@@ -190,6 +190,12 @@
 
 
 
+	}
+	function test_input($data){
+		$data=stripcslashes($data);
+		$data=htmlspecialchars($data);
+		$data=trim($data);
+		return $data;
 	}
 	
 

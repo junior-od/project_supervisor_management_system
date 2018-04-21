@@ -8,6 +8,12 @@
     $user_name=$_SESSION['supervisor_user_name'];
 	$error_message="";
 	$sucess_message="";
+	function test_input($data){
+		$data=stripcslashes($data);
+		$data=htmlspecialchars($data);
+		$data=trim($data);
+		return $data;
+	}
 	if(isset($_POST['book_appointment'])){
 		if (!empty($_POST['book_time']) && !empty($_POST['book_date'])){
 			if(!empty($_POST['book_message'])){
@@ -18,9 +24,10 @@
 				$max_num_students_per_day= $_SESSION['max_num_students_per_day'];
 				$book_time=$_POST['book_time'];
 				$book_date=$_POST['book_date'];
+				date_default_timezone_set("Africa/Lagos");
 				$book_date_change=strtotime("$book_date");
 				$change_book_date=date("d-m-Y",$book_date_change);
-				$book_message=$_POST['book_message'];
+				$book_message=test_input($_POST['book_message']);
 
 				$today_time=strtotime("today");//get todays time
 				$today_date=date("d-m-Y",$today_time);
@@ -36,12 +43,12 @@
 				  $i=$i+1;
 				}
 				
-
 				if($book_time >= $from_time && $book_time <= $to_time){
-					if($book_date >= $today_date && $book_date < $end ){
+					if($change_book_date >= $today_date && $book_date < $end ){
 						if(in_array($change_book_date, $date_time)){
 							$query_appointment_list=$connect->query("SELECT * FROM appointment_$user_name WHERE appointment_date='".$change_book_date."'");
 							$query_appointment_list_count=count($query_appointment_list->fetchAll());
+
 							
 							if($query_appointment_list_count < $max_num_students_per_day){
 								if(strlen($book_message)<=500){
@@ -53,9 +60,20 @@
 																				VALUES(:student_name,:appointment_date,:time)");
 										$insert_appointment->execute(array(':student_name' => $full_name,':appointment_date' => $change_book_date,':time' => $book_time));
 
-										$insert_appointment_message=$connect->prepare("INSERT INTO message_$user_name(student_name,message)
-																						VALUES(:stud_name,:message)");
-										$insert_appointment_message->execute(array(':stud_name' => $full_name,':message' => $book_message));
+										$query_supervisor_name=$connect->query("SELECT supervisor_name FROM supervisors WHERE userName='".$user_name."'");
+										$query_supervisor_name_fetch=$query_supervisor_name->fetchAll();
+										foreach($query_supervisor_name_fetch as $s){
+											$supervisor_name=$s['supervisor_name'];
+										}
+
+										 $insert_message=$connect->prepare("INSERT INTO message_$user_name(sender,receiver,message)
+																			VALUES(:sender,:receiver,:message)");
+
+										 $insert_message->execute(array(':sender'=> $full_name,':receiver'=> $supervisor_name,':message'=>$book_message));
+
+										 //$insert_appointment_message=$connect->prepare("INSERT INTO message_$user_name(student_name,message)
+										// 												VALUES(:stud_name,:message)");
+										// $insert_appointment_message->execute(array(':stud_name' => $full_name,':message' => $book_message));
 
 										$sucess_message="<div class='alert alert-success' role='alert'>
 		                               BOOKING WAS SUCESSFUL
@@ -129,6 +147,7 @@
 	                    </div>";
 		}
 		
+
 	}
 	
 ?>

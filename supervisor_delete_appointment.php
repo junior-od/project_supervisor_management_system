@@ -17,11 +17,7 @@
     	$appoint_id=$info['id'];
     	$name=$info['student_name'];
     	$date=$info['appointment_date'];
-    	$time=$info['time'];
-
-
-
-    	
+    	$time=$info['time'];	
     }
    
     

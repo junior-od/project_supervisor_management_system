@@ -104,7 +104,7 @@
 															opened ENUM('0','1') NOT NULL,
 															sender_delete ENUM('0','1') NOT NULL,
 															receiver_delete ENUM('0','1') NOT NULL,
-															time_sent TIMESTAMP
+															time_sent TIMESTAMP NOT NULL
 
 															)";
 

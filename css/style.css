@@ -395,3 +395,18 @@ body{
 	overflow-y:auto;
 
 }
+
+.inbox_button{
+	font-size: 40px;
+	color:black;
+	transition:all 0.5s;
+}
+
+.conversations{
+	overflow-y:auto; 
+	overflow-x: hidden;
+	background-color: gray;
+	height:300px;
+	width:100%;
+	
+}

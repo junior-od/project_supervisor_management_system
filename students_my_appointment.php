@@ -2,6 +2,22 @@
 	include("db_connect.php");
 	session_start();
 ?>
+<?php 
+	$unread="";
+    $user_name=$_SESSION['supervisor_user_name'];
+	$full_name=  $_SESSION['fullName'];
+	$query_message_table=$connect->query("SELECT * FROM message_$user_name WHERE receiver='".$full_name."' AND opened ='0' ");
+	$query_message_table_count=count($query_message_table->fetchAll());
+
+	if($query_message_table_count > 0){
+		$unread= $query_message_table_count;
+	}
+	else{
+		$unread="";
+	}
+
+
+?>
 
 
 
@@ -29,7 +45,7 @@
 			<ul class="supervisor_menu">
 				<li class="supervisor_menu_list"><a href="students_home_page.php" class="supervisor_menu_link "><i class="fa fa-list" aria-hidden="true"></i>BOOK APPOINTMENT </a></li>
 				<li class="supervisor_menu_list"><a href="students_user_profile.php" class="supervisor_menu_link "><i class="fa fa-user" aria-hidden="true"></i> USER PROFILE</a></li>
-				<li class="supervisor_menu_list"><a href="students_messages.php" class="supervisor_menu_link "><i class="fa fa-envelope" aria-hidden="true"></i>MESSAGES</a></li>
+				<li class="supervisor_menu_list"><a href="students_messages.php" class="supervisor_menu_link "><i class="fa fa-envelope" aria-hidden="true"></i>MESSAGES <sup><?php echo $unread; ?></sup></a></li>
 				<li class="supervisor_menu_list"><a href="students_my_appointment.php" class="supervisor_menu_link supervisor_menu_link_active"><i class="fa fa-list" aria-hidden="true"></i>MY APPOINTMENTS</a></li>
 				
 			</ul>

@@ -396,7 +396,24 @@
 
 
 ?>
+<?php
+    $user_name= $_SESSION['userName'];
+    $full_name=$_SESSION['supervisor_name'];
+	$unread="";
+	$query_message_table=$connect->query("SELECT * FROM message_$user_name WHERE receiver='".$full_name."' AND opened ='0' ");
+	$query_message_table_count=count($query_message_table->fetchAll());
 
+	if ($query_message_table_count >0){
+			$unread= $query_message_table_count;
+	}
+	else{
+		$unread="";
+	}
+
+
+
+
+?>
 
 
 <!DOCTYPE html>
@@ -421,7 +438,7 @@
 			<ul class="supervisor_menu">
 				<li class="supervisor_menu_list"><a href="supervisor_home_page.php" class="supervisor_menu_link "><i class="fa fa-list" aria-hidden="true"></i> APPOINTMENT LIST</a></li>
 				<li class="supervisor_menu_list"><a href="supervisor_dashboard.php" class="supervisor_menu_link supervisor_menu_link_active"><i class="fa fa-user" aria-hidden="true"></i> DASHBOARD</a></li>
-				<li class="supervisor_menu_list"><a href="supervisor_messages.php" class="supervisor_menu_link"><i class="fa fa-envelope" aria-hidden="true"></i>MESSAGES</a></li>
+				<li class="supervisor_menu_list"><a href="supervisor_messages.php" class="supervisor_menu_link"><i class="fa fa-envelope" aria-hidden="true"></i>MESSAGES <sup ><?php echo $unread; ?></sup></a></li>
 				
 			</ul>
 

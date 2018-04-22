@@ -2,6 +2,24 @@
 	include("db_connect.php");
 	session_start();
 ?>
+<?php
+    $user_name= $_SESSION['userName'];
+    $full_name=$_SESSION['supervisor_name'];
+	$unread="";
+	$query_message_table=$connect->query("SELECT * FROM message_$user_name WHERE receiver='".$full_name."' AND opened ='0' ");
+	$query_message_table_count=count($query_message_table->fetchAll());
+
+	if ($query_message_table_count >0){
+			$unread= $query_message_table_count;
+	}
+	else{
+		$unread="";
+	}
+
+
+
+
+?>
 
 <?php 
  	function test_input($data){
@@ -30,7 +48,7 @@
 					foreach ($query_email_fetch as $row) {
 						$fullName= $row['fullName'];
 					}
-
+					
 					$insert_message=$connect->prepare("INSERT INTO message_$user_name(sender,receiver,message)
 														VALUES(:sender,:receiver,:message)");
 					$insert_message->execute(array(':sender'=> $supervisor_name,':receiver' => $fullName,':message' => $message ));
@@ -91,7 +109,7 @@
 			<ul class="supervisor_menu">
 				<li class="supervisor_menu_list"><a href="supervisor_home_page.php" class="supervisor_menu_link "><i class="fa fa-list" aria-hidden="true"></i> APPOINTMENT LIST</a></li>
 				<li class="supervisor_menu_list"><a href="supervisor_dashboard.php" class="supervisor_menu_link "><i class="fa fa-user" aria-hidden="true"></i> DASHBOARD</a></li>
-				<li class="supervisor_menu_list"><a href="supervisor_messages.php" class="supervisor_menu_link supervisor_menu_link_active"><i class="fa fa-envelope" aria-hidden="true"></i>MESSAGES</a></li>
+				<li class="supervisor_menu_list"><a href="supervisor_messages.php" class="supervisor_menu_link supervisor_menu_link_active"><i class="fa fa-envelope" aria-hidden="true"></i>MESSAGES<sup><?php echo $unread; ?></sup></a></li>
 				
 			</ul>
 
@@ -110,7 +128,7 @@
 
 
 			<div class="message_box">
-				<br>
+				<a href="supervisor_messages.php"><i class="fa fa-angle-left" aria-hidden="true">  back</i></a><br>
 				<form method ="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" style="text-align:center;" >
 
 					<label >TO:</label>

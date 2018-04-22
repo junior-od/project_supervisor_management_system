@@ -2,6 +2,7 @@
 	include("db_connect.php");
 	session_start();
 ?>
+
 <?php 
 	$unread="";
     $user_name=$_SESSION['supervisor_user_name'];
@@ -16,6 +17,10 @@
 		$unread="";
 	}
 
+    $sender=$_GET['sender'];
+	$_SESSION['sender']=$_GET['sender'];
+	$update_opened= $connect->prepare("UPDATE message_$user_name SET opened='1' WHERE sender='".$sender."' AND receiver='".$full_name."' ");
+	$update_opened->execute();
 	
 
 
@@ -55,58 +60,55 @@
 			<a href="students_log_out.php" class="log_out">Log Out</a>
 			<br>
 			<div class="message_box">
-				
-				<table style=" width:100%;">
-					<h2>CHATS</h2>
-				<?php 
-					$sender=$_SESSION['supervisor_full_name'];
-					$get_inbox_table=$connect->query("SELECT DISTINCT (sender) FROM message_$user_name WHERE receiver='".$full_name."' ORDER BY time_sent DESC");
-					$get_inbox_table_fetch=$get_inbox_table->fetchAll();
+				<a href="students_messages.php"><i style="font-size:20px;" class="fa fa-angle-left" aria-hidden="true">  <?php echo $_SESSION['sender']; ?></i></a><br>
+				<div class="conversations">
+					<table style=" width:100%; height:auto;">
+					<?php 
+
+					    $query_history=$connect->query("SELECT sender,message,time_sent FROM message_$user_name WHERE (sender='".$full_name."' AND receiver='".$sender."') OR (sender='".$sender."' AND receiver='".$full_name."') ORDER BY time_sent DESC");
+						$query_history_fetch=$query_history->fetchAll();
+						foreach ($query_history_fetch as $fet) {
+							$time=strtotime($fet['time_sent']);
+							 $time_sent=date("d-m-Y H:i",$time);
+							if($fet['sender'] == $sender){
+								echo "<tr>";
+
+								echo "<td style='float:left;background-color:black; width:400px; border-radius:5px; color:white;'><h6>".$fet['sender']."</h6>";
+								echo $fet['message']."<span style='float:right'>".$time_sent."</span>"."</td>";
+								// echo $time_sent;
+
+								echo "</tr>";
+
+							}
+							else{
+								echo "<tr>";
+
+								echo "<td style='float:right;background-color:black; width:400px; border-radius:5px; color:white'><h6>".$fet['sender']."</h6>";
+								echo $fet['message']."<span style='float:right'>".$time_sent."</span>"."</td>";
+								// echo $time_sent;
+
+								echo "</tr>";
+
+							}
+							
+						}
+
+
+					?>
+					</table >
+
+				</div>
 					
-					foreach ($get_inbox_table_fetch as $d) {
-						echo "<tr>";
-						echo "<td>";
-						echo "<h2>".$d['sender']."</h2>"."  ";
-
-						$sender=$d['sender'];
-						
-						$get_last_date=$connect->query("SELECT MAX(time_sent)AS last_time FROM message_$user_name WHERE (receiver='".$full_name."' AND sender='".$sender."') OR (receiver='".$sender."' AND sender='".$full_name."')");
-					    $get_last_date_fetch=$get_last_date->fetchAll();
-					    foreach($get_last_date_fetch as $w){
-					    	//$w['last_time'];
-					    	$last_time=$w['last_time'];
-					    	
-					    	 $get_last_message=$connect->query("SELECT message FROM message_$user_name WHERE ((receiver='".$full_name."' AND sender='".$sender."') OR (receiver='".$sender."' AND sender='".$full_name."')) AND time_sent='".$last_time."'  ");
-							 $get_last_message_fetch=$get_last_message->fetchAll();
-							    foreach($get_last_message_fetch as $m){
-							    	echo "<p>".$m['message']."</p>";
-							    	
-							    }
-							     echo "</td>";
-							    $get_unopen=$connect->query("SELECT * FROM message_$user_name WHERE (receiver='".$full_name."' AND sender='".$sender."') AND opened='0'");
-					    	$get_unopen_count=count($get_unopen->fetchAll());
-					    	if ($get_unopen_count > 0){
-					    		echo "<td><span >".$get_unopen_count."</span></td>";
-					    	}
-					    	else{
-					    		$get_unopen_count="";
-					    		echo "<td><span >".$get_unopen_count."</span></td>";
-
-					    	}
-					    	
+				<form action="students_chat_send.php" method="get">
+					<textarea rows="3" name="message" class="form-control" ></textarea>
+					<br>
+					<input class="btn btn-success" type="submit" value="send">
 
 
+				</form>
 
-					    }
-					    
-					     echo "<td> <a href='students_chat_room.php?sender=$sender' class='inbox_button'><i class='fa fa-angle-right'></i></td>";
-					    echo "</tr>";
-					   
-					}
-
-
-				?>
-			</table>
+				
+			
 
 			</div>
 

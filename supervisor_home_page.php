@@ -79,7 +79,9 @@
 
 
 					foreach($appointment_list_fetch as $get){
-						if($get['appointment_date'] < $today_date){
+						$ap_time=$get['appointment_date'];
+						$ap_time_sec=strtotime("$ap_time");
+						if($ap_time_sec < $today_time){
 							$delete=$connect->exec("DELETE  FROM appointment_$user_name WHERE id='".$get['id']."' AND appointment_date='".$get['appointment_date']."' ");
 
 						}

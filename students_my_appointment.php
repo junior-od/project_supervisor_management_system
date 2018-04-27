@@ -89,8 +89,7 @@
 						$ap_date=date("d-m-Y H:i:sa",$ap_time);
 						
 
-
-					 	 if ($ap_date < $today_date){
+					 	 if ($ap_time < $today_time){
 					 		$delete=$connect->exec("DELETE  FROM appointment_$user_name WHERE id='".$get['id']."' AND appointment_date='".$get['appointment_date']."' ");
 					 	 }
 					 	else{
@@ -120,7 +119,7 @@
 						    
 
 						    
-						    if ($now_time_date > $end_appointment_cancel_time){
+						    if ($now_time > $end_appointment_cancel){
 						    	echo  "<td><button type='submit' class='btn btn-danger disabled' >CANCEL APPOINTMENT</button></td>";	
 						    }
 						    else{

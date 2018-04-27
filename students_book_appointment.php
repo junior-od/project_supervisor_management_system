@@ -37,15 +37,19 @@
 				$end=date("d-m-Y",$end_date);
 				$i=0;
 				
+
+				
 				while ($start_date < $end_date) {
 				  $date_time[$i]=date("d-m-Y", $start_date);
 				  $start_date = strtotime("+1 week", $start_date);
 				  $i=$i+1;
 				}
+				
+				
 
 				
 				if($book_time >= $from_time && $book_time <= $to_time){
-					if($change_book_date >= $today_date && $book_date < $end ){
+					if($book_date_change >= $today_time && $book_date_change < $end_date ){
 						if(in_array($change_book_date, $date_time)){
 							$query_appointment_list=$connect->query("SELECT * FROM appointment_$user_name WHERE appointment_date='".$change_book_date."'");
 							$query_appointment_list_count=count($query_appointment_list->fetchAll());

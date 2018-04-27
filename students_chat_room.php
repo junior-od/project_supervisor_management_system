@@ -102,7 +102,7 @@
 				<form action="students_chat_send.php" method="get">
 					<textarea rows="3" name="message" class="form-control" ></textarea>
 					<br>
-					<input class="btn btn-success" type="submit" value="send">
+					<input class="btn btn-success" type="submit" id="form_submit"value="send">
 
 
 				</form>
@@ -137,6 +137,9 @@
 <script>window.jQuery </script>
 <script src="assets/js/vendor/popper.min.js"></script>
 <script src="js/jquery-1.11.1.js"></script>
+<script>
+
+</script>
 <script src="js/bootstrap.min.js"></script>
 <script src="assets/js/vendor/holder.min.js"></script>
 </body>

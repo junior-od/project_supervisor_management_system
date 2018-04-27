@@ -68,7 +68,7 @@
 						echo "<td>";
 						echo "<h2>".$d['sender']."</h2>"."  ";
 
-						$sender=$d['sender'];
+						$sender_i=$d['sender'];
 						
 						$get_last_date=$connect->query("SELECT MAX(time_sent)AS last_time FROM message_$user_name WHERE (receiver='".$full_name."' AND sender='".$sender."') OR (receiver='".$sender."' AND sender='".$full_name."')");
 					    $get_last_date_fetch=$get_last_date->fetchAll();

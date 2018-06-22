@@ -129,131 +129,159 @@
 </head>
 <body class="body">
 
-<div class="modal " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal_styles" role="document">
-       <div class="modal-content" data-image>
-          
-             <div class="modal-body modal_style" >
-             	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close" aria-hidden="true"></i></button>
-             	<h5 class="modal-title sign_up_as_title" id="exampleModalLabel">SIGN UP AS </h5>
-                
-             	<ul class="sign_up_as">
-             		<li class="sign_up_as_list"><button class="btn sign_up_as_button" onclick="window.location.href='supervisor_sign_up.php'">SUPERVISOR</button></li>
-             		<li class="sign_up_as_list"><button class="btn sign_up_as_button" onclick="window.location.href='student_sign_up.php'">STUDENT</button></li>
-             	</ul>
-              
-                  
-            </div>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">User Signup</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+                        <div class="row">
+             	<ul class="sign_up_as col-xs-12">
+                   <div class="row">
+           		<li class="sign_up_as_list col-md-6"><button class="btn sign_up_as_button" onclick="window.location.href='supervisor_sign_up.php'">SUPERVISOR</button></li>
+                    <li class="sign_up_as_list col-md-6"><button class="btn sign_up_as_button" onclick="window.location.href='student_sign_up.php'">STUDENT</button></li>
+               </div>
+           	</ul>
+          </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
     </div>
+  </div>
+  
 </div>
-
-
-<nav class="navbar navbars navbar-expand-lg   fixed-top">
-	<ul class="index_list">
-		<li class="index_list_style"><a class="navbar-brand" href=" " >SUPERVISOR</a></li>
-		<li class="index_list_style"><button class="btn sign_up_button" id="mySignUpButton">Sign Up</button></li>
-	</ul>
-
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="index.php">SUPERVISOR MANAGEMENT SYSTEM</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+     
+      </li>
+      <li class="nav-item">
+    
+      </li>
+      <li class="nav-item">
+      
+      </li>
+    </ul>
+    <span class="navbar-text">
+    <button class=" btn sign_up_button" id="mySignUpButton">Sign Up</button>
+    </span>
+  </div>
 </nav>
 <br>
 <br>
 <br>
 
+<div class="modal fade" id="login_supervisor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered role="document">
+    <div class="modal-content">
 
-<div class="modal " id="login_supervisor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal_styles" role="document">
-       <div class="modal-content" data-image>
-           
-             <div class="modal-body modal_style" >
-             	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close" aria-hidden="true"></i></button>
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Supervisor Login</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close" aria-hidden="true"></i></button>
              	<h5 class="modal-title sign_up_as_title" id="exampleModalLabel">SUPERVISOR LOG IN </h5>
                 
-             	<form method="post" class="login_form_pos" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" >
-             		<label class="login_text">User Name</label><br>
-	             	<input type="text" name="supervisor_user_name" class="login_input_box"><br>
-	             	<label class="login_text">Password</label><br>
-	             	<input type="password" name="supervisor_password" class="login_input_box"><br>
-	             	<br>
-	             	<input type="submit" class="login_submit" name="supervisor_login" value="LOG IN">
+                 <form method="post"  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" >
+                 <div class="form-group">
+             		<label class="login_text">User Name:</label>
+                     <input  class="form-control"type="text" name="supervisor_user_name" class="login_input_box"><br>
+                </div>
+                <div class="form-group">
+	             	<label class="login_text">Password:</label>
+	             	<input class="form-control" type="password" name="supervisor_password" class="login_input_box"><br>
+                </div>
+                     <input type="submit" class="btn btn-primary" name="supervisor_login" value="LOG IN">
+                
+             	</form>
+      </div>
 
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="login_student" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered role="document">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">STUDENT Login</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+                 <form method="post"  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+                 <div class="form-group">
+             		<label class="login_text">Matric Number:</label>
+                     <input type="text" name="matric_number" class="form-control">
+                </div>
+                <div class="form-group">
+	             	<label class="login_text">Password:</label>
+	             	<input type="password" name="student_password" class="form-control">
+                </div>
+                <input type="submit" class="btn btn-primary" name="student_login" value="LOG IN">
              	</form>
              	
-             	
-                  
+                   <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
             </div>
         </div>
     </div>
 </div>
-
-<div class="modal " id="login_student" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal_styles" role="document">
-       <div class="modal-content" data-image>
-           
-             <div class="modal-body modal_style" >
-             	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close" aria-hidden="true"></i></button>
-             	<h5 class="modal-title sign_up_as_title" id="exampleModalLabel">STUDENT LOG IN </h5>
-         
-             	<form method="post" class="login_form_pos"  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
-             		<label class="login_text">Matric Number</label><br>
-	             	<input type="text" name="matric_number" class="login_input_box"><br>
-	             	<label class="login_text">Password</label><br>
-	             	<input type="password" name="student_password" class="login_input_box"><br>
-	             	<br>
-	             	<input type="submit" class="login_submit" name="student_login" value="LOG IN">
-             	</form>
-             	
-                  
-            </div>
-        </div>
-    </div>
+<div class="col-md-6 ">
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+    <?php
+    if($error_empty_message || $error_invalid_message){
+echo $error_empty_message.$error_invalid_message;
+    }
+?>
+	
 </div>
-<div class="col-sm-12 ">
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<?php 
-        echo $error_empty_message;
-        echo $error_invalid_message;
-     ?>
-
-
-
-	<ul class="log_in_as">
+<div class="col-md-12">
+<ul class="log_in_as">
 		<h4 class="log_in_as_title">LOG IN AS</h4>
         <li class="log_in_as_list"><button class="btn log_in_as_button" id="log_in_supervisor_button">SUPERVISOR</button></li>
         <li class="log_in_as_list"><button class="btn log_in_as_button" id="log_in_student_button">STUDENT</button></li>
     </ul>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <nav class="navbar navbars navbar-expand-lg  fixed-bottom ">

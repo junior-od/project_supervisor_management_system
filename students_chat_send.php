@@ -13,16 +13,16 @@
  		$data=stripcslashes($data);
  		return $data;
  	}
- 	$message=test_input($_GET['message']);
+ 	$message=test_input($_POST['message']);
 
-   if (empty($_GET['message'])){
-   	header("location:students_messages.php");
+   if (empty($_POST['message'])){
+     //	header("location:students_messages.php");
    }
    else{
     	$insert_message=$connect->prepare("INSERT INTO message_$user_name(sender,receiver,message)
 	 													VALUES(:sender,:receiver,:message)");
 	 $insert_message->execute(array(':sender'=> $full_name,':receiver' => $receiver,':message' => $message ));
-   	header("location:students_messages.php");
+   //	header("location:students_chat_room.php");
 
    }
 ?>

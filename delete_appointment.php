@@ -17,7 +17,7 @@ include 'db_connect.php';
     $query_info_fetch=$query_info->fetchAll();
     foreach ($query_info_fetch as $info) {
     	
-    	echo $name=$info['student_name'];
+    	 $name=$info['student_name'];
     	
     }
 	

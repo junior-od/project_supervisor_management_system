@@ -415,46 +415,115 @@
 
 ?>
 
-
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<title>Supervisor Appointment Management System|</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+	<title>Supervisor Appointment Management System</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
+    <link href="assets/css/demo.css" rel="stylesheet" />
+	<link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
 
 </head>
-<body>		
-<div class="col-sm-12">
-	<div class="row">
-		<div class="col-sm-3 side_nav_supervisor bg-secondary">
-			<h3 class="supervisor_heading"><?php echo $_SESSION['userName']; ?></h3>
-			<hr class="horizontal_line">
-			<br>
-			<ul class="supervisor_menu">
-				<li class="supervisor_menu_list"><a href="supervisor_home_page.php" class="supervisor_menu_link "><i class="fa fa-list" aria-hidden="true"></i> APPOINTMENT LIST</a></li>
-				<li class="supervisor_menu_list"><a href="supervisor_dashboard.php" class="supervisor_menu_link supervisor_menu_link_active"><i class="fa fa-user" aria-hidden="true"></i> DASHBOARD</a></li>
-				<li class="supervisor_menu_list"><a href="supervisor_messages.php" class="supervisor_menu_link"><i class="fa fa-envelope" aria-hidden="true"></i>MESSAGES <sup ><?php echo $unread; ?></sup></a></li>
-				
-			</ul>
+<body>	
+<div class="wrapper">
+    <div class="sidebar" data-background-color="black" data-active-color="danger">
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                    <h3 class="simple-text"><?php echo $_SESSION['userName']; ?></h3>
+            </div>
 
-		</div>
-		<div class="col-sm-9 body_supervisor">
-			<a href="supervisor_logout.php" class="log_out">Log Out</a>
-			<br>
-			<br>
-			<br>
-			
+            <ul class="nav">
+                <li class="">
+                    <a href="supervisor_home_page.php">
+                        <i class="ti-list"></i>
+                        <p>Appointment List</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="supervisor_dashboard.php">
+                        <i class="ti-dashboard"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="supervisor_messages.php">
+                        <i class="ti-email"></i>
+                        <p>Messages <span class="badge bg-green" style="background-color:orangered;color:white;"><?php echo $unread; ?></span></p>
+                    </a>
+                </li>
+               
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-panel"></i>
+								<p>Stats</p>
+                            </a>
+                        </li> -->
+                        <!-- <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-bell"></i>
+                                    <p class="notification">5</p>
+									<p>Notifications</p>
+									<b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li> -->
+						<li>
+                            <a href="supervisor_logout.php">
+								<i class="ti-shift-left"></i>
+								<p>Logout</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+		<div class="content">
+            <div class="container-fluid"> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+								<h4 class="title"> APPOINTMENT SCHEDULE</h4>
+                            </div>
+                            <div class="content  table-responsive table-full-width">
+                            <table class="table table-hover">
+								<tbody>
 			<?php echo $error_message;
 					echo $sucess_message; 
 			?>
-			<div class="col-sm-12 supervisor_schedule">
-				<table class="table">
-					<h3>APPOINTMENT SCHEDULE</h3>
 				  <thead>
 				    <tr>
 				      <th scope="col">DAYS</th>
@@ -464,101 +533,97 @@
 				      <th scope="col">SET</th>
 				    </tr>
 				  </thead>
-				  <tbody>
 				    <tr>
-				    <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">	
+					<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+					<div class="form-group">	
 				      <th scope="row"><?php echo $sunday; ?></th>
 				      <td><input type="time" name="from_time" class="form-control"></td>
 				      <td><input type="time" name="to_time" class="form-control"></td>
-
 				      <td><input type="number" name="max_students" class="form-control" ></td>
-				      <td><input type="submit" name="update_sunday" class="button_for_appoint" value="update"></td>
+					  <td><input type="submit" name="update_sunday" class="btn btn-info" value="update"></td>
+					</div>
 				     </form>
 				    </tr>
 				    <tr>
-				    <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+					<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+					<div class="form-group">
 				      <th scope="row"><?php  echo $monday ;?></th>
 				      <td><input type="time" name="from_time_monday" class="form-control"></td>
 				      <td><input type="time" name="to_time_monday" class="form-control"></td>
 				      <td><input type="number" name="max_students_monday" class="form-control"></td>
-				      <td><input type="submit" name="update_monday" class="button_for_appoint" value="update"></td>
+					  <td><input type="submit" name="update_monday" class="btn btn-info" value="update"></td>
+						</div>
+						</form>
 				    </tr>
 				    <tr>
-				      <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" >
+	
+					  <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" >
+					  <div class="form-group">
 				      <th scope="row"><?php   echo $tuesday; ?></th>
 				      <td><input type="time" name="from_time_tuesday" class="form-control"></td>
 				      <td><input type="time" name="to_time_tuesday" class="form-control"></td>
 				      <td><input type="number" name="max_students_tuesday" class="form-control"></td>
-				      <td><input type="submit" name="update_tuesday" class="button_for_appoint" value="update"></td>
+					  <td><input type="submit" name="update_tuesday" class="btn btn-info" value="update"></td>
+					</div>
 				      </form>
 				    </tr>
 				     <tr>
-				      <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+					  <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+					  <div class="form-group">
 				      <th scope="row"><?php  echo $wednesday; ?></th>
 				      <td><input type="time" name="from_time_wednesday" class="form-control"></td>
 				      <td><input type="time" name="to_time_wednesday" class="form-control"></td>
 				      <td><input type="number"  name="max_students_wednesday" class="form-control"></td>
-				      <td><input type="submit" name="update_wednesday" class="button_for_appoint" value="update"></td>
+					  <td><input type="submit" name="update_wednesday" class="btn btn-info" value="update"></td>
+					 </div>
 				  </form>
 				    </tr>
 				     <tr>
-				     <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+					 <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+					 <div class="form-group">
 				      <th scope="row"><?php  echo $thursday; ?></th>
 				       <td><input type="time" name="from_time_thursday" class="form-control"></td>
 				      <td><input type="time" name="to_time_thursday" class="form-control"></td>
 				      <td><input type="number" name="max_students_thursday" class="form-control" ></td>
-				      <td><input type="submit" name="update_thursday" class="button_for_appoint" value="update"></td>
+					  <td><input type="submit" name="update_thursday" class="btn btn-info" value="update"></td>
+					</div>
 				  </form>
 				    </tr>
 				     <tr>
-				     <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+					 <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+					 <div class="form-group">
 				      <th scope="row"><?php  echo $friday; ?></th>
 				       <td><input type="time" name="from_time_friday" class="form-control"></td>
 				      <td><input type="time" name="to_time_friday" class="form-control"></td>
 				      <td><input type="number" name="max_students_friday" class="form-control"></td>
-				      <td><input type="submit" name="update_friday" class="button_for_appoint" value="update"></td>
+					  <td><input type="submit" name="update_friday" class="btn btn-info" value="update"></td>
+					</div>
 				  </form>
 				    </tr>
 				     <tr>
-				     <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+					 <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+					 <div class="form-group">
 				      <th scope="row"><?php  echo $saturday; ?></th>
 				      <td><input type="time" name="from_time_saturday" class="form-control"></td>
 				      <td><input type="time" name="to_time_saturday" class="form-control"></td>
 				      <td><input type="number" name="max_students_saturday" class="form-control"></td>
-				      <td><input type="submit" name="update_saturday" class="button_for_appoint" value="update"></td>
+					  <td><input type="submit" name="update_saturday" class="btn btn-info" value="update"></td>
+						</div>
 				  </form>
 				    </tr>
-				  </tbody>
-				</table>
-				
-			</div>
-		
-			
-			
-		</div>
-		
-		
-
-	
-
-	</div>
-</div>
+					</tbody>
+					</table> 
+                        </div>
+                    </div>
+                </div>
+    </div>
 
 
-
-
-
-
-
-
-
-
-
-<script src="assets/js/vendor/jquery-slim.min.js"></script>
-<script>window.jQuery </script>
-<script src="assets/js/vendor/popper.min.js"></script>
-<script src="js/jquery-1.11.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="assets/js/vendor/holder.min.js"></script>
 </body>
+    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap-notify.js"></script>
+	<script src="assets/js/paper-dashboard.js"></script>
+	<script src="assets/js/demo.js"></script>
+
 </html>

@@ -41,6 +41,8 @@ body{
 
 }
 
+
+
 .sign_up_as_button:hover{
 	border-color: #002633;
 	background-color: #002633;
@@ -409,4 +411,35 @@ body{
 	height:300px;
 	width:100%;
 	
+}
+
+
+hr {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+#files {
+    overflow-y: scroll !important;
+    height: 200px;
+}
+@media (min-width: 768px) {
+	#files {
+		min-height: 0;
+	}
+}
+#debug {
+	overflow-y: scroll !important;
+	height: 200px;	
+}
+
+.dm-uploader {
+	border: 0.25rem dashed #A5A5C7;
+	text-align: center;
+	height: 200px;
+	
+}
+.dm-uploader.active {
+	border-color: red;
+
+	border-style: solid;
 }

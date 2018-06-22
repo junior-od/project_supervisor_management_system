@@ -12,6 +12,10 @@ $(document).ready(function(){
 		$("#login_student").modal();
 	})
 
+   
+
+
+
 
 
 })

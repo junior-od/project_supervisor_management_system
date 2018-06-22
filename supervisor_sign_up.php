@@ -9,11 +9,13 @@
 			}
 			else{
 				$query_name=$connect->query("SELECT * FROM supervisor_management_system.supervisors WHERE supervisor_name='".$_POST['full_name']."'");
+				$query_student_name=$connect->query("SELECT * FROM supervisor_management_system.students WHERE fullName='".$_POST['full_name']."'");
+				$query_student_name_count=count($query_student_name->fetchAll());
 				$count=count($query_name->fetchAll());
 				if (!preg_match("/^[a-zA-Z ]*$/", $_POST['full_name'])){
 					$full_name_error="re enter*";
 				}
-				else if ($count > 0){
+				else if ($count > 0 || $query_student_name_count > 0 ){
 					$full_name_error="already exists";
 				}
 				
@@ -178,7 +180,7 @@
 														$max_num_students_per_day="0";
 														$insert_into_appointment_table->execute(array(':days' => $days,':from_time' => $from_time ,':to_time'=> $to_time,':max_num_students_per_day' => $max_num_students_per_day));
 														
-														header("location:sucessPage_supervisor.php");
+														header("location:index.php");
 													    
 										}
 									}
@@ -221,42 +223,71 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
+<link href="css/form.css" rel="stylesheet">
+<style>
+	.body{
+	background: url("images/bg.jpg");
+	background-repeat: no-repeat;
+	overflow-x:hidden;
+	overflow-y:auto;
+	background-size: cover;
+	width:100%;
+	height:100vh;
+	
+
+}
+	</style>
 </head>
-<body class="body">
-<nav class="navbar navbars navbar-expand-lg  fixed-top ">
-	<ul class="index_list">
-		<li class="index_list_style"><a class="navbar-brand" href="index.php " >SUPERVISOR</a></li>
-	</ul>
+<body class="body">	
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="index.php">SUPERVISOR MANAGEMENT SYSTEM</a>
 </nav>
-<br>
-<br>
-<br>
 
-<div class="col-sm-12">
-	<div class="container_form">
-		<form class="supervisor_sign_up_form" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data">
-			<h4 class="sign_up_title_style">SIGN UP HERE as <span class="supervisor_type">Supervisor</span></h4>
-			<label class="sign_up_style">Full Name</label><br>
-			<input type="text" name="full_name" id="fullName" onchange="lowerCase()"><span class="errors"><?php echo $full_name_error; ?></span><br>
-
-
-			<label class="sign_up_style">User Name </label><br>
-			<input type="text" name="user_name" onchange="lowerCase()" id="userName"><span class="errors"><?php echo $user_name_error; ?></span><br>
-
-			<label class="sign_up_style">Email Address</label><br>
-			<input type="text" name="email_address" id="emailAddress" onchange="lowerCase()"><span class="errors"><?php echo $email_address_error; ?></span><br>
-
-			<label class="sign_up_style">Password</label><br>
-			<input type="password" name="password"><span class="errors"><?php echo $password_error; ?></span></br>
-
-			<label class="sign_up_style">Confirm Password</label><br>
-			<input type="password" name="confirm_password"><span class="errors"><?php echo $confirm_password_error; ?></span><br>
-			<br>
-
-			<input type="submit" class="sign_up_button_for_reg" value="SIGN UP">
-		</form>
-	</div>
-</div>
+ <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+						<div class="col-sm-6  form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>Sign up now</h3>
+                            		<p>As Supervisor</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-pencil"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom" >
+			                    <form role="form"  method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data" class="registration-form">
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="form-first-name">Full name</label>
+			                        	<input class="form-first-name form-control" placeholder="Full name..." type="text" name="full_name" id="fullName" onchange="lowerCase()"><span class="errors"><?php echo $full_name_error; ?></span>
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-last-name">Username</label>
+			                        	<input placeholder="Username..." class="form-last-name form-control" type="text" name="user_name" onchange="lowerCase()" id="userName"><span class="errors"><?php echo $user_name_error; ?></span>
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-email">Email</label>
+			                        	<input placeholder="Username..." class="form-last-name form-control" type="text" name="email_address" id="emailAddress" onchange="lowerCase()"><span class="errors"><?php echo $email_address_error; ?></span> 
+			                        </div>
+			                        <div class="form-group">
+											<label class="sr-only" for="form-password">Password</label>
+											<input placeholder=" Password..." class="form-password form-control" type="password" name="password"><span class="errors"><?php echo $password_error; ?></span>
+										 </div>
+										 <div class="form-group">
+												<label class="sr-only" for="form-password">Confirm Password</label>
+												<input  placeholder=" confirm Password..." class="form-password form-control"type="password" name="confirm_password"><span class="errors"><?php echo $confirm_password_error; ?></span> 
+											 </div>
+			                        <button type="submit" class="btn btn-primary">Sign me up!</button>
+			                    </form>
+							</div>
+						</div>
+						</div>
+						</div>
+						</div>
+						</div>
 
 
 

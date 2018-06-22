@@ -18,45 +18,120 @@
 
 
 ?>
-
-
-
-
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<title>Supervisor Appointment Management System|</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+	<title>Supervisor Appointment Management System</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
+    <link href="assets/css/demo.css" rel="stylesheet" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
 
 </head>
-<body>		
-<div class="col-sm-12">
-	<div class="row">
-		<div class="col-sm-3 side_nav_supervisor bg-secondary">
-			<h3 class="supervisor_heading"><?php echo $_SESSION['fullName']; ?></h3>
-			<hr class="horizontal_line">
-			<br>
-			
-			<ul class="supervisor_menu">
-				<li class="supervisor_menu_list"><a href="students_home_page.php" class="supervisor_menu_link "><i class="fa fa-list" aria-hidden="true"></i>BOOK APPOINTMENT </a></li>
-				<li class="supervisor_menu_list"><a href="students_user_profile.php" class="supervisor_menu_link "><i class="fa fa-user" aria-hidden="true"></i> USER PROFILE</a></li>
-				<li class="supervisor_menu_list"><a href="students_messages.php" class="supervisor_menu_link "><i class="fa fa-envelope" aria-hidden="true"></i>MESSAGES <sup><?php echo $unread; ?></sup></a></li>
-				<li class="supervisor_menu_list"><a href="students_my_appointment.php" class="supervisor_menu_link supervisor_menu_link_active"><i class="fa fa-list" aria-hidden="true"></i>MY APPOINTMENTS</a></li>
-				
-			</ul>
+<body>
 
-		</div>
-		<div class="col-sm-9 body_supervisor">
-			<p>Supervisor:<?php echo $_SESSION['supervisor_full_name']; ?></p>
-			<a href="students_log_out.php" class="log_out">Log Out</a>
-			<br>
-			<div class="body_view_appointment">
-				<table class="table">
+<div class="wrapper">
+    <div class="sidebar" data-background-color="black" data-active-color="danger">
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                    <h3 class="simple-text"><?php echo $_SESSION['fullName']; ?></h3>
+            </div>
+
+            <ul class="nav">
+                <li class="">
+                    <a href="students_home_page.php">
+                        <i class="ti-list"></i>
+                        <p>Book Appointment</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="students_user_profile.php">
+                        <i class="ti-user"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="students_messages.php">
+                        <i class="ti-email"></i>
+                        <p>Messages <span class="badge bg-green" style="background-color:orangered;color:white;"><?php echo $unread; ?></span></p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="students_my_appointment.php">
+                        <i class="ti-list"></i>
+                        <p>My Appontments</p>
+                    </a>
+                </li>
+               
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><p>Assigned Supervisor:<?php echo " ". $_SESSION['supervisor_full_name']; ?></p></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-panel"></i>
+								<p>Stats</p>
+                            </a>
+                        </li> -->
+                        <!-- <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-bell"></i>
+                                    <p class="notification">5</p>
+									<p>Notifications</p>
+									<b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li> -->
+						<li>
+                            <a href="students_log_out.php">
+								<i class="ti-shift-left"></i>
+								<p>Logout</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid"> 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                            </div>
+                            <div class="content  table-responsive table-full-width">
+							<table class="table table-hover">
 					<thead>
 					    <tr>
 					      <th scope="col">DATE</th>
@@ -123,11 +198,12 @@
 						    	echo  "<td><button type='submit' class='btn btn-danger disabled' >CANCEL APPOINTMENT</button></td>";	
 						    }
 						    else{
-						    	echo  "<td><button type='submit' class='btn btn-danger ' ><a  class='delete_link' href='delete_student_appointment.php?id=$temp_id'>CANCEL APPOINTMENT</a></button></td>";	
+								
+						    	echo  "<td><a   class='btn btn-danger delete_link' href='delete_student_appointment.php?id=$temp_id'>CANCEL APPOINTMENT</a></td>";	
 						    }	
 
 						    
-						    echo "<td>".$day."d " .$hour."h ".$minutes."m ".$second."s "."</td>";
+						    //echo "<td>".$day."d " .$hour."h ".$minutes."m ".$second."s "."</td>";
 						    
 						 	
                             $temp_time="";
@@ -143,35 +219,17 @@
 				?>
 					</tbody>
 				</table>
+                        </div>
+                    </div>
+                </div>
+    </div>
 
 
-			</div>
-			
-			
-		</div>
-		
-		
-
-	
-
-	</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-<script src="assets/js/vendor/jquery-slim.min.js"></script>
-<script>window.jQuery </script>
-<script src="assets/js/vendor/popper.min.js"></script>
-<script src="js/jquery-1.11.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="assets/js/vendor/holder.min.js"></script>
 </body>
+    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap-notify.js"></script>
+	<script src="assets/js/paper-dashboard.js"></script>
+	<script src="assets/js/demo.js"></script>
+
 </html>

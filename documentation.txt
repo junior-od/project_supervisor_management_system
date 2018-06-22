@@ -1,0 +1,16 @@
+
+
+
+supervior LOGIN details :
+username:junior_od
+
+password:oduberu
+
+
+student Login details:
+
+matric no:150805511
+password:oduberu
+
+matric no:150805513
+password:adesina

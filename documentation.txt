@@ -1,4 +1,5 @@
-
+Runs on localhost
+import sql file first
 
 
 supervior LOGIN details :
